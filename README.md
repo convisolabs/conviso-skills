@@ -2,6 +2,30 @@
 
 Skills for LLMs to operate the Conviso Platform through `conviso-cli`, kept separate from the CLI repository.
 
+## What Is a Skill?
+
+A skill is a reusable operational playbook for an LLM.
+
+It packages:
+
+- A defined workflow (step order and expected inputs/outputs).
+- Safety rules (what is allowed, what requires explicit approval).
+- Helper scripts and templates for repeatable execution.
+
+In this repository, skills use the Conviso CLI as the execution engine, but add process and governance on top.
+
+## Why Use Skills?
+
+Use skills when you need reliable and scalable execution, not just raw command access.
+
+Skills provide:
+
+- Consistency: every run follows the same flow.
+- Safety: preview-first and explicit approval for mutating actions.
+- Speed: less ad-hoc decision-making during operations.
+- Auditability: standardized artifacts (`json`, `md`, `csv`) for review and compliance.
+- LLM readiness: clear guardrails that reduce operational mistakes.
+
 ## Structure
 
 - `skills/conviso-vuln-remediator/`: triage + remediation with `preview-first` and explicit `apply`.
@@ -10,7 +34,7 @@ Skills for LLMs to operate the Conviso Platform through `conviso-cli`, kept sepa
 
 - Conviso CLI installed (`conviso`) or configured through `CONVISO_CLI_BIN`.
 - CLI environment variables (`CONVISO_API_KEY`, `CONVISO_API_URL` when applicable).
-- `bash` e `python3`.
+- `bash` and `python3`.
 
 ## Security Pattern
 
@@ -18,7 +42,7 @@ Skills for LLMs to operate the Conviso Platform through `conviso-cli`, kept sepa
 - Mutation: only through an explicit `apply` step.
 - Preview is required before `apply`.
 
-## Skill vs CLI direta
+## Skill vs Direct CLI
 
 Using `conviso-cli` directly means running isolated commands. It is powerful, but it depends on operator experience to maintain order, validations, and safety on every run.
 
