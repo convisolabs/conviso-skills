@@ -1,0 +1,4 @@
+version: 1
+display_name: Conviso Vuln Remediator
+short_description: Triage and preview-first remediation workflow for Conviso vulnerabilities.
+default_prompt: Run the Conviso vulnerability remediator workflow in analyze mode for my company, then show what would change before any apply.

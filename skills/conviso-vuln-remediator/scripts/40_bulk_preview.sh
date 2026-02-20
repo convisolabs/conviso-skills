@@ -19,5 +19,7 @@ if [[ -z "$COMPANY_ID" || -z "$FILE" ]]; then
   exit 1
 fi
 
+"$(dirname "$0")/35_validate_bulk_csv.sh" --file "$FILE"
+
 echo "[bulk-preview] running preview-only"
 run_cli bulk vulns --company-id "$COMPANY_ID" --file "$FILE" --op update --preview-only

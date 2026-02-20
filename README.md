@@ -4,22 +4,16 @@ Skills para LLMs operarem a Conviso Platform via `conviso-cli`, separados do rep
 
 ## Estrutura
 
-- `skills/conviso-vuln-remediator/`: skill MVP de triagem e remediação de vulnerabilidades.
+- `skills/conviso-vuln-remediator/`: triagem + remediação com `preview-first` e `apply` explícito.
 
 ## Pré-requisitos
 
-- Conviso CLI instalada (`conviso`) ou rodando com `python -m conviso.app`.
-- Variáveis de ambiente da CLI configuradas (`CONVISO_API_KEY`, `CONVISO_API_URL` quando aplicável).
+- Conviso CLI instalada (`conviso`) ou configurada em `CONVISO_CLI_BIN`.
+- Variáveis da CLI (`CONVISO_API_KEY`, `CONVISO_API_URL` quando aplicável).
 - `bash` e `python3`.
 
-## Uso rápido
+## Padrão de segurança
 
-1. Abra o `SKILL.md` da skill desejada.
-2. Siga o workflow e execute os scripts de `scripts/`.
-3. Por padrão, as ações são somente leitura ou `dry-run`.
-
-## Convenções
-
-- Scripts falham rápido (`set -euo pipefail`).
-- Saídas estruturadas são gravadas em `out/` dentro da própria skill.
-- Ações mutáveis só com confirmação explícita no workflow.
+- Modo padrão: análise/read-only.
+- Mutação: apenas com etapa explícita de `apply`.
+- Preview obrigatório antes de `apply`.

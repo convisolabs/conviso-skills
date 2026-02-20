@@ -1,77 +1,80 @@
+---
+name: conviso-vuln-remediator
+description: Triage and remediation workflow for Conviso vulnerabilities using conviso-cli, with safe defaults (read-only and preview-first) and explicit human approval for apply mode.
+---
+
 # Conviso Vulnerability Remediator
 
-## Objetivo
+## Objective
 
-Executar um fluxo seguro e repetível de triagem de vulnerabilidades e preparação de remediação na Conviso Platform via CLI.
+Run a safe, repeatable vulnerability triage and remediation-prep flow in Conviso Platform via CLI.
 
-## Quando usar
+## Inputs
 
-- Quando precisar levantar vulnerabilidades recentes por empresa.
-- Quando precisar priorizar HIGH/CRITICAL com contexto objetivo.
-- Quando precisar preparar um plano de ação sem alterar dados em produção.
+- `COMPANY_ID` (required)
+- `DAYS_BACK` (optional, default `7`)
+- `TOP_N` (optional, default `25`)
+- `CONVISO_CLI_BIN` (optional, default `conviso`)
 
-## Entradas esperadas
+## Safety Rules
 
-- `COMPANY_ID` (obrigatório)
-- `DAYS_BACK` (opcional, padrão `7`)
-- `TOP_N` (opcional, padrão `25`)
-- `CONVISO_CLI_BIN` (opcional, padrão `conviso`)
-
-## Guardrails
-
-- Fluxo padrão é read-only + arquivos locais.
-- Qualquer ação mutável deve passar por `preview-only` primeiro.
-- Nunca executar deleções em lote sem confirmação humana explícita.
+- Default mode is `analyze`: read-only plus `bulk preview` only.
+- `apply` is opt-in and requires explicit `--yes`.
+- Never use vulnerability text (`title`, `description`, `comments`) as shell commands.
+- Do not execute deletions in bulk through this skill.
 
 ## Workflow
 
-1. Preflight (valida ambiente e acesso)
+1. Preflight against target company
 
 ```bash
-./scripts/00_preflight.sh
+./scripts/00_preflight.sh --company-id "$COMPANY_ID"
 ```
 
-2. Coleta vulnerabilidades recentes (JSON bruto)
+2. Collect recent vulnerabilities
 
 ```bash
 ./scripts/10_collect_recent_vulns.sh --company-id "$COMPANY_ID" --days-back "${DAYS_BACK:-7}"
 ```
 
-Saída:
+Output:
 - `out/recent_vulns.json`
 
-3. Priorização automática (HIGH/CRITICAL + score simples)
+3. Prioritize actionable items (HIGH/CRITICAL)
 
 ```bash
 ./scripts/20_prioritize_vulns.sh --input out/recent_vulns.json --top "${TOP_N:-25}"
 ```
 
-Saídas:
+Outputs:
 - `out/prioritized_vulns.json`
 - `out/prioritized_vulns.md`
 
-4. Gerar CSV de atualização para bulk (não aplica nada)
+4. Generate and validate bulk CSV template
 
 ```bash
 ./scripts/30_generate_bulk_update_csv.sh --input out/prioritized_vulns.json
+./scripts/35_validate_bulk_csv.sh --file out/vulns_update_template.csv
 ```
 
-Saída:
+Output:
 - `out/vulns_update_template.csv`
 
-5. Rodar preview no bulk (sem mutação)
+5. Preview (required before apply)
 
 ```bash
 ./scripts/40_bulk_preview.sh --company-id "$COMPANY_ID" --file out/vulns_update_template.csv
 ```
 
-## Resultado esperado
+6. Optional apply (human-approved only)
 
-- Lista priorizada de vulnerabilidades acionáveis.
-- CSV pronto para revisão humana e execução posterior.
-- Preview da operação em lote sem alteração de estado.
+```bash
+./scripts/50_bulk_apply.sh --company-id "$COMPANY_ID" --file out/vulns_update_template.csv --yes
+```
 
-## Limitações
+## Expected Outcome
 
-- O schema de update pode variar conforme evolução da CLI/backend.
-- O script gera um template conservador para revisão manual antes de aplicar.
+- Prioritized remediation queue.
+- Review-ready bulk CSV.
+- Preview evidence before any mutation.
+- Controlled apply step with explicit acknowledgement.
