@@ -26,16 +26,10 @@ ROOT="$(skill_root)"
 OUT_JSON="$ROOT/out/recent_vulns.json"
 OUT_META="$ROOT/out/collection_meta.json"
 
-CREATED_START="$(python3 - <<PY
-from datetime import date, timedelta
-print((date.today() - timedelta(days=int("$DAYS_BACK"))).isoformat())
-PY
-)"
-
-echo "[collect] company=$COMPANY_ID created_start=$CREATED_START severities=$SEVERITIES"
+echo "[collect] company=$COMPANY_ID days_back=$DAYS_BACK severities=$SEVERITIES"
 run_cli vulns list \
   --company-id "$COMPANY_ID" \
-  --created-start "$CREATED_START" \
+  --days-back "$DAYS_BACK" \
   --severities "$SEVERITIES" \
   --all \
   --format json \
@@ -47,7 +41,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 Path("$OUT_META").write_text(json.dumps({
   "companyId": "$COMPANY_ID",
-  "createdStart": "$CREATED_START",
+  "daysBack": int("$DAYS_BACK"),
   "severities": "$SEVERITIES",
   "collectedAtUtc": datetime.now(timezone.utc).isoformat(),
 }, indent=2))
