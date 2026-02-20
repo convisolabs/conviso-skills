@@ -28,8 +28,9 @@ file = Path(sys.argv[1])
 required = {"id", "status", "severity", "comment"}
 
 with file.open(newline="") as f:
-    rows = list(csv.DictReader(f))
-    headers = set(rows[0].keys()) if rows else set()
+    reader = csv.DictReader(f)
+    rows = list(reader)
+    headers = set(reader.fieldnames or [])
     if not required.issubset(headers):
         missing = sorted(required - headers)
         raise SystemExit(f"Missing required headers: {', '.join(missing)}")

@@ -37,7 +37,7 @@ out_md = Path(sys.argv[3])
 top_n = int(sys.argv[4])
 
 def sev_score(v):
-    sev = (v.get("severity") or "").upper()
+    sev = normalize_severity(v.get("severity"))
     return {
         "CRITICAL": 4,
         "HIGH": 3,
@@ -60,6 +60,12 @@ def safe_text(text):
     clean = clean.replace("`", "'").replace("#", "")
     return clean[:180]
 
+def normalize_severity(raw):
+    txt = str(raw or "")
+    # Remove rich/ansi-like bracket tags from CLI-formatted output.
+    txt = re.sub(r"\[[^\]]+\]", "", txt).strip().upper()
+    return txt
+
 raw = json.loads(inp.read_text())
 if isinstance(raw, dict) and "items" in raw:
     items = raw.get("items", [])
@@ -71,7 +77,7 @@ else:
 for item in items:
     item["_priorityScore"] = sev_score(item) + status_penalty(item)
 
-filtered = [x for x in items if (x.get("severity") or "").upper() in {"HIGH", "CRITICAL"}]
+filtered = [x for x in items if normalize_severity(x.get("severity")) in {"HIGH", "CRITICAL"}]
 filtered.sort(key=lambda x: (x.get("_priorityScore", 0), x.get("createdAt") or ""), reverse=True)
 selected = filtered[:top_n]
 
@@ -89,7 +95,7 @@ lines = [
 for idx, v in enumerate(selected, 1):
     lines.append(f"## {idx}. {safe_text(v.get('title') or 'Untitled')}")
     lines.append(f"- id: {v.get('id', 'N/A')}")
-    lines.append(f"- severity: {v.get('severity', 'N/A')}")
+    lines.append(f"- severity: {normalize_severity(v.get('severity')) or 'N/A'}")
     lines.append(f"- status: {v.get('status', 'N/A')}")
     lines.append(f"- priorityScore: {v.get('_priorityScore', 0)}")
     lines.append(f"- createdAt: {v.get('createdAt', 'N/A')}")
