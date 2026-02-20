@@ -9,6 +9,25 @@ description: Triage and remediation workflow for Conviso vulnerabilities using c
 
 Run a safe, repeatable vulnerability triage and remediation-prep flow in Conviso Platform via CLI.
 
+## Setup
+
+1. Install and validate the CLI:
+
+```bash
+${CONVISO_CLI_BIN:-conviso} --help
+```
+
+2. Ensure auth is available:
+
+- `CONVISO_API_KEY` is required.
+- `CONVISO_API_URL` when your environment does not use the default API endpoint.
+
+3. Quick access check:
+
+```bash
+${CONVISO_CLI_BIN:-conviso} projects list --company-id "$COMPANY_ID" --limit 1 --format json
+```
+
 ## Inputs
 
 - `COMPANY_ID` (required)

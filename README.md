@@ -36,6 +36,20 @@ Skills provide:
 - CLI environment variables (`CONVISO_API_KEY`, `CONVISO_API_URL` when applicable).
 - `bash` and `python3`.
 
+## Install and Verify CLI
+
+Install with your preferred method:
+
+- Installed command: `conviso`
+- From source (example): `CONVISO_CLI_BIN="python -m conviso.app"`
+
+Verify before running any skill:
+
+```bash
+${CONVISO_CLI_BIN:-conviso} --help
+${CONVISO_CLI_BIN:-conviso} projects list --company-id <company_id> --limit 1 --format json
+```
+
 ## Security Pattern
 
 - Default mode: analysis/read-only.
