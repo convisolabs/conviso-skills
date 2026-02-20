@@ -1,0 +1,26 @@
+[
+  {
+    "id": 101,
+    "title": "SQL Injection in /login",
+    "severity": "CRITICAL",
+    "createdAt": "2026-02-19",
+    "projectId": 9001,
+    "assetId": 5001
+  },
+  {
+    "id": 102,
+    "title": "Reflected XSS in search",
+    "severity": "HIGH",
+    "createdAt": "2026-02-18",
+    "projectId": 9002,
+    "assetId": 5002
+  },
+  {
+    "id": 103,
+    "title": "Informational header missing",
+    "severity": "LOW",
+    "createdAt": "2026-02-17",
+    "projectId": 9003,
+    "assetId": 5003
+  }
+]
