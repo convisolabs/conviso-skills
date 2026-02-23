@@ -68,3 +68,7 @@ Required authentication:
 ```bash
 ./scripts/40_apply_risk_plan.sh --company-id "$COMPANY_ID" --file out/asset_risk_plan.csv --yes
 ```
+
+## References
+
+- Conviso Platform Risk Score: `https://docs.convisoappsec.com/platform/risk-score`

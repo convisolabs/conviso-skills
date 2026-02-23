@@ -72,3 +72,7 @@ ${CONVISO_CLI_BIN:-conviso} --help
 ```bash
 ./scripts/40_apply_assignments.sh --file out/assignment_plan.csv --yes
 ```
+
+## References
+
+- Conviso Platform Vulnerabilities: `https://docs.convisoappsec.com/platform/vulnerabilities`

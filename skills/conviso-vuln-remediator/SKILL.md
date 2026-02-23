@@ -97,3 +97,7 @@ Output:
 - Review-ready bulk CSV.
 - Preview evidence before any mutation.
 - Controlled apply step with explicit acknowledgement.
+
+## References
+
+- Conviso Platform Vulnerabilities: `https://docs.convisoappsec.com/platform/vulnerabilities`
