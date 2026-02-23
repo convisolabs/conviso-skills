@@ -1,0 +1,6 @@
+priority,match_field,match_value,assignee_email
+1,asset_tag,frontend,appsec-frontend@conviso.com
+2,asset_tag,backend,appsec-backend@conviso.com
+3,issue_type,WEB,web-owner@conviso.com
+4,issue_type,SAST,sast-owner@conviso.com
+100,default,*,security-triage@conviso.com

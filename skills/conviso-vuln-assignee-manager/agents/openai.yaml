@@ -1,0 +1,4 @@
+version: 1
+display_name: Conviso Vuln Assignee Manager
+short_description: Mapping-driven vulnerability ownership assignment with preview-first apply.
+default_prompt: Build and validate a vulnerability assignment plan from mapping rules, then preview all updates before applying.

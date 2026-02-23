@@ -1,0 +1,4 @@
+version: 1
+display_name: Conviso Asset Risk Parametrizer
+short_description: Standardize asset metadata for risk scoring with policy-driven updates.
+default_prompt: Generate a policy-based asset risk parameterization plan, validate it, and preview updates before applying.

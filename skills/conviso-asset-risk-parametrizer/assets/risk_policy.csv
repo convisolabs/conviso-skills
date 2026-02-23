@@ -1,0 +1,5 @@
+priority,match_field,match_value,business_impact,data_classification,tags,environment_compromised
+1,asset_tag,payment,HIGH,PAYMENT_CARD_INDUSTRY,"payment,critical",false
+2,asset_tag,pii,HIGH,PERSONALLY_IDENTIFIABLE_INFORMATION,"pii,critical",false
+3,asset_name,internal,MEDIUM,NON_SENSITIVE,"internal",false
+100,default,*,LOW,NON_SENSITIVE,"managed",false

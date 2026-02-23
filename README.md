@@ -1,6 +1,6 @@
 # conviso-skills
 
-Skills for LLMs to operate the Conviso Platform through `conviso-cli`, kept separate from the CLI repository.
+Skills for LLMs to operate the Conviso Platform through `conviso-cli`.
 
 ## What Is a Skill?
 
@@ -29,6 +29,8 @@ Skills provide:
 ## Structure
 
 - `skills/conviso-vuln-remediator/`: triage + remediation with `preview-first` and explicit `apply`.
+- `skills/conviso-vuln-assignee-manager/`: mapping-based ownership assignment for vulnerabilities.
+- `skills/conviso-asset-risk-parametrizer/`: policy-based asset metadata normalization for risk scoring.
 
 ## Prerequisites
 
@@ -56,7 +58,7 @@ ${CONVISO_CLI_BIN:-conviso} projects list --company-id <company_id> --limit 1 --
 - Mutation: only through an explicit `apply` step.
 - Preview is required before `apply`.
 
-## Skill vs Direct CLI
+## Skill vs CLI
 
 Using `conviso-cli` directly means running isolated commands. It is powerful, but it depends on operator experience to maintain order, validations, and safety on every run.
 
