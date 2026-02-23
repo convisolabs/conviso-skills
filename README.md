@@ -1,4 +1,4 @@
-# conviso-skills
+# Conviso Skills
 
 Skills for LLMs to operate the Conviso Platform through `conviso-cli`.
 
