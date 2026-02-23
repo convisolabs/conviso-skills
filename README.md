@@ -16,6 +16,24 @@ This repository is intended for open collaboration.
 - Contribution Guide: [`CONTRIBUTING.md`](CONTRIBUTING.md)
 - Issues: [github.com/convisolabs/conviso-skills/issues](https://github.com/convisolabs/conviso-skills/issues)
 
+## Install via skills.sh
+
+Install all skills from this repository:
+
+```bash
+npx skills add convisolabs/conviso-skills
+```
+
+Install a single skill:
+
+```bash
+npx skills add https://github.com/convisolabs/conviso-skills --skill conviso-vuln-remediator
+npx skills add https://github.com/convisolabs/conviso-skills --skill conviso-vuln-assignee-manager
+npx skills add https://github.com/convisolabs/conviso-skills --skill conviso-asset-risk-parametrizer
+```
+
+Note: skills.sh listing is driven by installs/usage telemetry, so publishing these commands helps discovery in the marketplace.
+
 ## What Is a Skill?
 
 A skill is a reusable operational playbook for an LLM.
