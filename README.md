@@ -10,6 +10,12 @@ This repository is intended for open collaboration.
 - New skills should follow the existing structure and safety model.
 - Use `CONTRIBUTING.md` for contribution rules and validation expectations.
 
+## Project Links
+
+- Repository: [convisolabs/conviso-skills](https://github.com/convisolabs/conviso-skills)
+- Contribution Guide: [`CONTRIBUTING.md`](CONTRIBUTING.md)
+- Issues: [github.com/convisolabs/conviso-skills/issues](https://github.com/convisolabs/conviso-skills/issues)
+
 ## What Is a Skill?
 
 A skill is a reusable operational playbook for an LLM.
