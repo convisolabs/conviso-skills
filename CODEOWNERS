@@ -1,0 +1,6 @@
+# Replace the team below with your actual team handle in GitHub if needed.
+# Example: @convisolabs/appsec-platform
+* @welias
+
+# Skills and scripts require explicit review.
+/skills/** @welias

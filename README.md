@@ -2,6 +2,14 @@
 
 Skills for LLMs to operate the Conviso Platform through `conviso-cli`.
 
+## Open Source and Contributions
+
+This repository is intended for open collaboration.
+
+- Contributions are welcome through pull requests.
+- New skills should follow the existing structure and safety model.
+- Use `CONTRIBUTING.md` for contribution rules and validation expectations.
+
 ## What Is a Skill?
 
 A skill is a reusable operational playbook for an LLM.
