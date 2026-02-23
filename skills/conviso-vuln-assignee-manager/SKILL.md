@@ -75,4 +75,4 @@ ${CONVISO_CLI_BIN:-conviso} --help
 
 ## References
 
-- Conviso Platform Vulnerabilities: `https://docs.convisoappsec.com/platform/vulnerabilities`
+- [Conviso Platform Vulnerabilities](https://docs.convisoappsec.com/platform/vulnerabilities)

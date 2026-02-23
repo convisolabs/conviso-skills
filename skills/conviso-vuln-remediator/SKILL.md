@@ -100,4 +100,4 @@ Output:
 
 ## References
 
-- Conviso Platform Vulnerabilities: `https://docs.convisoappsec.com/platform/vulnerabilities`
+- [Conviso Platform Vulnerabilities](https://docs.convisoappsec.com/platform/vulnerabilities)

@@ -71,4 +71,4 @@ Required authentication:
 
 ## References
 
-- Conviso Platform Risk Score: `https://docs.convisoappsec.com/platform/risk-score`
+- [Conviso Platform Risk Score](https://docs.convisoappsec.com/platform/risk-score)
